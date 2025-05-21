@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import querystring from "querystring";
 dotenv.config();
 
- const configByEnv = {
+const configByEnv = {
   sandbox: { baseUrl: "http://treino.bhan.com.br:15200/api/totvsmoda" },
   prod: { baseUrl: "https://www30.bhan.com.br:9443/api/totvsmoda" },
 };
@@ -44,7 +44,7 @@ class TotvsBaseClient {
         ...params,
         page,
       });
-      
+
       if (!response.items) {
         const errorObject = new Error('No items returned in response');
         errorObject.type = 'INVALID_RESPONSE';
