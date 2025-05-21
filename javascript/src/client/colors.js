@@ -1,6 +1,6 @@
 
 import TotvsBaseClient from '../core/base-client.js'
-import z from 'zod'
+import z from 'zod/v4'
 
 class TotvsColorsClient extends TotvsBaseClient {
   get endpoint() { return 'product/v2/colors'; }

@@ -1,5 +1,5 @@
 import TotvsBaseClient from '../core/base-client.js'
-import z from 'zod'
+import z from 'zod/v4'
 
 class TotvsLegalCustomer extends TotvsBaseClient {
   get endpoint() { return 'person/v2/legal-entities'; }

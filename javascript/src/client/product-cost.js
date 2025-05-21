@@ -1,10 +1,10 @@
 import TotvsBaseClient from '../core/base-client.js'
-import z from 'zod'
+import z from 'zod/v4'
 
-class TotvsProductBalanceClient extends TotvsBaseClient {
-  get endpoint() { return 'product/v2/balances'; }
+class TotvsProductCostClient extends TotvsBaseClient {
+  get endpoint() { return 'product/v2/costs'; }
 
-    async list(startDate, endDate, page = 1, pageSize = 300) {
+  async list(startDate, endDate, page = 1, pageSize = 300) {
     z.number(page, 'page')
     z.number(pageSize, 'pageSize')
     z.string(startDate, 'startDate')
@@ -17,56 +17,51 @@ class TotvsProductBalanceClient extends TotvsBaseClient {
           startDate,
           endDate,
           inProduct: true,
-          inStock: true,
-          stockCodeList: [3],
+          inCost: true,
           branchCostCodeList: [1, 2],
+          costCodeList: [2],
         },
       },
       option: {
-        balances: [
+        costs: [
           {
             branchCode: 1,
-            stockCodeList: [3],
-            isTransaction: true,
-            isSalesOrder: true,
-            isProductionOrder: true,
-          }
-        ]
+            costCodeList: [2],
+          },
+        ],
       },
       page,
       pageSize,
       order: '-productCode',
+      expand: 'classifications,details,referenceCodeSequences',
     })
-    }
+  }
 
   getAll(opts = {}) {
     return this.getAllPaginating(`${this.endpoint}/search`, {
-      filter: {
+            filter: {
         change: {
           startDate: opts.startDate,
           endDate: opts.endDate,
           inProduct: true,
-          inStock: true,
-          stockCodeList: [3],
+          inCost: true,
           branchCostCodeList: [1, 2],
+          costCodeList: [2],
         },
       },
       option: {
-        balances: [
+        costs: [
           {
             branchCode: 1,
-            stockCodeList: [3],
-            isTransaction: true,
-            isSalesOrder: true,
-            isProductionOrder: true,
-          }
-        ]
+            costCodeList: [2],
+          },
+        ],
       },
       pageSize: opts.pageSize,
-      order: opts.order ?? "-productCode",
+      order: '-productCode',
+      expand: 'classifications,details,referenceCodeSequences',
     })
-
-    }
+  }
 }
 
-export default TotvsProductBalanceClient;
+export default TotvsProductCostClient;

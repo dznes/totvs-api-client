@@ -1,8 +1,8 @@
 import TotvsBaseClient from '../core/base-client.js'
-import z from 'zod'
+import z from 'zod/v4'
 
-class TotvsProductDetailsClient extends TotvsBaseClient {
-  get endpoint() { return 'product/v2/products'; }
+class TotvsOrderClient extends TotvsBaseClient {
+  get endpoint() { return 'sales-order/v2/orders'; }
 
     async list(startDate, endDate, page = 1, pageSize = 300) {
     z.number(page, 'page')
@@ -16,14 +16,6 @@ class TotvsProductDetailsClient extends TotvsBaseClient {
         change: {
           startDate,
           endDate,
-          inProduct: true,
-          inCost: true,
-          branchCostCodeList: [1, 2],
-          costCodeList: [2],
-          inPrice: true,
-          inDigitalPromotionPrice: true,
-          branchPriceCodeList: [1, 2],
-          priceCodeList: [1, 2],
         },
         startOrderDate: '2020-01-01T17:34:58.073Z',
         endOrderDate: endDate,
@@ -31,8 +23,7 @@ class TotvsProductDetailsClient extends TotvsBaseClient {
       },
       page,
       pageSize,
-      order: '-productCode',
-      expand: 'classifications,details,referenceCodeSequences',
+      expand: 'items,shippingAddress,invoices',
     })
     }
 
@@ -42,24 +33,17 @@ class TotvsProductDetailsClient extends TotvsBaseClient {
         change: {
           startDate: opts.startDate,
           endDate: opts.endDate,
-          inProduct: true,
-          inCost: true,
-          branchCostCodeList: [1, 2],
-          costCodeList: [2],
-          inPrice: true,
-          inDigitalPromotionPrice: true,
-          branchPriceCodeList: [1, 2],
-          priceCodeList: [1, 2],
         },
         startOrderDate: '2020-01-01T17:34:58.073Z',
         endOrderDate: opts.endDate,
         branchCodeList: [1, 2],
       },
       pageSize: opts.pageSize,
-      order: '-productCode',
-      expand: 'classifications,details,referenceCodeSequences',
+      order: opts.order ?? "-orderCode",
+      expand: 'items,shippingAddress,invoices',
     })
-    }
+
+  }
 }
 
-export default TotvsProductDetailsClient;
+export default TotvsOrderClient;

@@ -1,5 +1,5 @@
 import BaseClient from '../core/base-client.js'
-import z from 'zod'
+import z from 'zod/v4'
 
 class AuthenticationClient extends BaseClient {
     constructor(clientId, clientSecret, username, password) {

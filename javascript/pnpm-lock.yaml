@@ -15,8 +15,8 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       zod:
-        specifier: ^3.25.7
-        version: 3.25.7
+        specifier: ^3.25.12
+        version: 3.25.12
 
 packages:
 
@@ -117,8 +117,8 @@ packages:
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
-  zod@3.25.7:
-    resolution: {integrity: sha512-YGdT1cVRmKkOg6Sq7vY7IkxdphySKnXhaUmFI4r4FcuFVNgpCb9tZfNwXbT6BPjD5oz0nubFsoo9pIqKrDcCvg==}
+  zod@3.25.12:
+    resolution: {integrity: sha512-A8e9eiwm2L5YEupdjn1YcxL1ZDWuL3Bc4JKvLwUrpKZZtRUDOijR7XXsV5WMuUCZPc1tFYO5yfH14STI08MquA==}
 
 snapshots:
 
@@ -217,4 +217,4 @@ snapshots:
 
   proxy-from-env@1.1.0: {}
 
-  zod@3.25.7: {}
+  zod@3.25.12: {}

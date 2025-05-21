@@ -1,10 +1,10 @@
 import axios from "axios";
-import z from "zod";
+import z from "zod/v4";
 import dotenv from "dotenv";
 import querystring from "querystring";
 dotenv.config();
 
-const configByEnv = {
+ const configByEnv = {
   sandbox: { baseUrl: "http://treino.bhan.com.br:15200/api/totvsmoda" },
   prod: { baseUrl: "https://www30.bhan.com.br:9443/api/totvsmoda" },
 };
@@ -108,7 +108,6 @@ class TotvsBaseClient {
           : "",
     };
 
-    console.log(options);
 
     this.lastRequest = { ...options, data: body };
     this.lastRequests.push(this.lastRequest);
