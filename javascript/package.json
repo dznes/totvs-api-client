@@ -7,15 +7,19 @@
   "type": "module",
   "scripts": {
     "compile": "",
-    "test": "node --test"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "dznes",
   "license": "ISC",
   "packageManager": "pnpm@10.10.0",
   "dependencies": {
+    "@faker-js/faker": "^9.8.0",
     "axios": "^1.9.0",
     "dotenv": "^16.5.0",
     "zod": "^3.25.12"
+  },
+  "devDependencies": {
+    "vitest": "^3.1.4"
   }
 }

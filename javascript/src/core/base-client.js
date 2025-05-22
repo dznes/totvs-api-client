@@ -16,9 +16,9 @@ async function sleep(ms) {
 }
 
 class TotvsBaseClient {
-  constructor(token, env = 'prod') {
-    const envSchema = z.enum(["sandbox", "prod"]);
-    this.env = envSchema.parse(env);
+  constructor(token, env = "prod") {
+    z.string().parse(env);
+    this.env = env;
 
 
     if (token) z.string(token, "token");

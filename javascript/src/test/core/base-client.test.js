@@ -1,19 +1,16 @@
-import '../test-helper.mjs'
-import assert from 'node:assert'
-import test from 'node:test'
+import "../test-helper.js";
+import { test, expect } from "vitest";
 
-import TotvsBaseClient from '../../core/base-client.js'
+import TotvsBaseClient from "../../core/base-client.js";
 
+const { TEST_TOKEN } = process.env;
 
+test("First test", () => {
+  expect(1).toBe(1);
+});
 
-test('First test', () => {
-  assert.strictEqual(1, 1);
-})
-
-test('Totvs client initialize / sanitize', () => {
-  const { TOTVS_CLIENT_ID, TOTVS_CLIENT_SECRET, TOTVS_USERNAME, TOTVS_PASSWORD } = process.env
-  const client = new TotvsBaseClient(TOTVS_CLIENT_ID, TOTVS_CLIENT_SECRET, TOTVS_USERNAME, TOTVS_PASSWORD)
-  assert(client);
-  assert(client.doRequest)
-}
-
+test("Totvs client initialize / sanitize", () => {
+  const client = new TotvsBaseClient(TEST_TOKEN, "sandbox");
+  expect(client).toBeTruthy();
+  expect(client.doRequest).toBeTruthy();
+});
